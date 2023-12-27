@@ -1,9 +1,19 @@
-env:
-  browser: true
-  es2021: true
-extends: airbnb-base
-overrides: []
-parserOptions:
-  ecmaVersion: latest
-  sourceType: module
-rules: {}
+name: project-tests
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: yaml-lint
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          config_file: .eslintrc.yml
+
