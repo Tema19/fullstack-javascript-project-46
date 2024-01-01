@@ -48,7 +48,7 @@ const gendiff = (filepath1, filepath2, callback) => {
       });
       const sortedResult = result.sort(compareFunc)
         .map((prop) => `   ${prop.propStatus} ${prop.propKey} : ${prop.propValue}`);
-      const printedResult = `{\r\n${sortedResult.join('\r\n')}\r\n}`;
+      const printedResult = `{\n${sortedResult.join('\n')}\n}`;
       callback(null, printedResult);
     });
   });
