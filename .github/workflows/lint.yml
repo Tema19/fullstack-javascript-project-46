@@ -28,9 +28,15 @@ jobs:
           run: npx eslint .
         - name: Run tests with coverage
           run: npm test -- --coverage
+
+        - name: Download cc-test-reporter
+          run: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
   
         - name: Send coverage report to Code Climate
           env:
             CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           run: |
-            npx codeclimate-test-reporter < coverage/lcov.info
+            ./cc-test-reporter format-coverage -t lcov coverage/lcov.info
+            ./cc-test-reporter upload-coverage
