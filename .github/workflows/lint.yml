@@ -26,13 +26,11 @@ jobs:
           run: npm test
         - name: Run lint
           run: npx eslint .
-        - name: Test & publish code coverage
-            # Publish code coverage on Code Climate
-            # https://github.com/paambaati/codeclimate-action
-          uses: paambaati/codeclimate-action@v5.0.0
-            # Add Code Climate secret key
+        - name: Run tests with coverage
+          run: npm test -- --coverage
+  
+        - name: Send coverage report to Code Climate
           env:
             CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          with:
-            coverageCommand: make test-coverage
-            debug: true
+          run: |
+            npx codeclimate-test-reporter < coverage/lcov.info

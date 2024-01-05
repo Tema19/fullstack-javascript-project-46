@@ -8,7 +8,21 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test2": "nyc mocha"
+  },
+  "jest": {
+    "coverageDirectory": "coverage",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ]
   },
   "repository": {
     "type": "git",
@@ -28,6 +42,7 @@
     "eslint": "^8.38.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "nyc": "^15.1.0"
   }
 }
