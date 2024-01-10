@@ -13,7 +13,6 @@ const result1 = await readFile('result1.txt');
 const result2 = await readFile('result2.txt');
 const result3 = await readFile('result3.txt');
 
-
 describe('Json file tests', () => {
   describe('comapareTwoJsonFiles', () => {
     test('gendiff with two partially different Json Files', () => {
@@ -41,12 +40,12 @@ describe('Json file tests', () => {
 
   describe('comapare Json file with Non existing file', () => {
     test('gendiff between Json and non existing file', () => {
-        expect(() => {
-          gendiff(getFixturePath('file1.json'), getFixturePath('NonexistingFile.json'));
-        }).toThrow(Error)
-      });
+      expect(() => {
+        gendiff(getFixturePath('file1.json'), getFixturePath('NonexistingFile.json'));
+      }).toThrow(Error);
     });
   });
+});
 
 describe('Yml file tests', () => {
   describe('comapareTwoYmlFiles', () => {
