@@ -36,7 +36,8 @@
   "homepage": "https://github.com/Tema19/fullstack-javascript-project-46#readme",
   "dependencies": {
     "commander": "^10.0.0",
-    "eslint-plugin-jest": "^27.6.0"
+    "eslint-plugin-jest": "^27.6.0",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "eslint": "^8.38.0",

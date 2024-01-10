@@ -8,3 +8,7 @@
 <a href="https://codeclimate.com/github/Tema19/fullstack-javascript-project-46/test_coverage"><img src="https://api.codeclimate.com/v1/badges/83ac941e624eacf49efa/test_coverage" /></a>
 
 <a href="https://asciinema.org/a/gvRRWimcamEpA8opTEqthEYeX" target="_blank"><img src="https://asciinema.org/a/gvRRWimcamEpA8opTEqthEYeX.svg" /></a>
+
+<a href="https://asciinema.org/a/g61iRZObiqSaxaqRg4rtD4hDW" target="_blank"><img src="https://asciinema.org/a/g61iRZObiqSaxaqRg4rtD4hDW.svg" /></a>
+
+
