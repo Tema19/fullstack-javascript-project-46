@@ -12,29 +12,24 @@ const readFile = (filename) => fs.readFile(getFixturePath(filename), 'utf-8');
 const result1 = await readFile('result1.txt');
 const result2 = await readFile('result2.txt');
 const result3 = await readFile('result3.txt');
+const result4 = await readFile('result4.txt');
 
 describe('Json file tests', () => {
   describe('comapareTwoJsonFiles', () => {
     test('gendiff with two partially different Json Files', () => {
-      gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'), (_error, currentResult) => {
-        expect(currentResult).toEqual(result1);
-      });
+      expect(gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toEqual(result1);
     });
   });
 
   describe('comapare two equal Json files', () => {
     test('gendiff between two equal Json files', () => {
-      gendiff(getFixturePath('file1.json'), getFixturePath('file1.json'), (_error, currentResult) => {
-        expect(currentResult).toEqual(result2);
-      });
+      expect(gendiff(getFixturePath('file1.json'), getFixturePath('file1.json'))).toEqual(result2);
     });
   });
 
   describe('comapare Json file with Empty Json', () => {
     test('gendiff between two equal Json files', () => {
-      gendiff(getFixturePath('file1.json'), getFixturePath('emptyJson.json'), (_error, currentResult) => {
-        expect(currentResult).toEqual(result3);
-      });
+      expect(gendiff(getFixturePath('file1.json'), getFixturePath('emptyJson.json'))).toEqual(result3);
     });
   });
 
@@ -50,25 +45,31 @@ describe('Json file tests', () => {
 describe('Yml file tests', () => {
   describe('comapareTwoYmlFiles', () => {
     test('gendiff with two partially different Json Files', () => {
-      gendiff(getFixturePath('file5.yml'), getFixturePath('file3.yml'), (_error, currentResult) => {
-        expect(currentResult).toEqual(result1);
-      });
+      expect(gendiff(getFixturePath('file3.yml'), getFixturePath('file5.yml'))).toEqual(result1);
     });
   });
 
   describe('comapare files with yml and yaml', () => {
     test('gendiff between two equal Json files', () => {
-      gendiff(getFixturePath('file5.yml'), getFixturePath('file4.yaml'), (_error, currentResult) => {
-        expect(currentResult).toEqual(result2);
-      });
+      expect(gendiff(getFixturePath('file4.yaml'), getFixturePath('file5.yml'))).toEqual(result1);
     });
   });
 
   describe('comapare yml file with Empty Json', () => {
     test('gendiff between two equal Json files', () => {
-      gendiff(getFixturePath('file5.yml'), getFixturePath('emptyJson.json'), (_error, currentResult) => {
-        expect(currentResult).toEqual(result3);
-      });
+      expect(gendiff(getFixturePath('file4.yaml'), getFixturePath('emptyJson.json'))).toEqual(result3);
+    });
+  });
+
+  describe('comapare Json files with nested objects', () => {
+    test('gendiff between two different Json files', () => {
+      expect(gendiff(getFixturePath('file7.json'), getFixturePath('file8.json'))).toEqual(result4);
+    });
+  });
+
+  describe('comapare Yml files with nested objects', () => {
+    test('gendiff between two different Json files', () => {
+      expect(gendiff(getFixturePath('file9.yml'), getFixturePath('file10.yml'))).toEqual(result4);
     });
   });
 });
