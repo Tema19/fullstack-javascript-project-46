@@ -1,17 +1,31 @@
 #!/usr/bin/env node
 import { program } from 'commander';
-import gendiff, { stylish } from '../src/gendiffFunc.js';
+import gendiff from '../src/gendiffFunc.js';
+import stylish from '../formaters/stylish.js';
+import plain from '../formaters/plain.js';
+import json from '../formaters/json.js';
 
 program
   .name('gendiff')
   .description('Compares two configuration files and shows a difference.')
   .version('1.0.0')
   .arguments('<filepath1> <filepath2> [formater]')
-  .action((filepath1, filepath2, formaterOption) => {
+  .action((filepath1, filepath2, formaterOption = 'stylish') => {
     let formater = formaterOption;
 
-    if (typeof formater === 'string') {
-      formater = stylish;
+    switch (formaterOption) {
+      case 'stylish':
+        formater = stylish;
+        break;
+      case 'plain':
+        formater = plain;
+        break;
+      case 'json':
+        formater = json;
+        break;
+      default:
+        formater = stylish;
+        break;
     }
 
     gendiff(filepath1, filepath2, formater);

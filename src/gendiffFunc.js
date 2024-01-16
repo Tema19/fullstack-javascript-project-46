@@ -83,19 +83,7 @@ function sortObject(obj) {
   return sortedObj;
 }
 
-function stylish(obj, depth = 1) {
-  const spaces = ' '.repeat(depth * 4 - 2);
-  const spacesEnds = ' '.repeat(depth * 4 - 4);
-  if (typeof obj !== 'object' || obj === null) {
-    return obj;
-  }
-  const result = Object.entries(obj)
-    .map(([key, value]) => `${spaces}${key}: ${stylish(value, depth + 1)}`)
-    .join('\n');
-  return `{\n${result}\n${spacesEnds}}`;
-}
-
-const gendiff = (filepath1, filepath2, formater = stylish) => {
+const gendiff = (filepath1, filepath2, formater = 'stylish') => {
   const data1 = readJsonYmlFile(filepath1);
   const data2 = readJsonYmlFile(filepath2);
   const result = formater(sortObject(diffObject(data1, data2)));
@@ -104,4 +92,3 @@ const gendiff = (filepath1, filepath2, formater = stylish) => {
 };
 
 export default gendiff;
-export { stylish };
