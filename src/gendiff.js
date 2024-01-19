@@ -1,4 +1,6 @@
-import readJsonYmlFile from './parsers.js';
+import fs from 'fs';
+import path from 'path';
+import parsers from './parsers.js';
 
 function addPrefixToObjectKeys(obj, prefix) {
   const newObj = {};
@@ -84,8 +86,17 @@ function sortObject(obj) {
 }
 
 const gendiff = (filepath1, filepath2, formater = 'stylish') => {
-  const data1 = readJsonYmlFile(filepath1);
-  const data2 = readJsonYmlFile(filepath2);
+  const absoluteFilepath1 = path.resolve(process.cwd(), filepath1);
+  const absoluteFilepath2 = path.resolve(process.cwd(), filepath2);
+
+  const file1Ext = path.extname(absoluteFilepath1);
+  const file2Ext = path.extname(absoluteFilepath2);
+
+  const filedata1 = fs.readFileSync(absoluteFilepath1, 'utf-8')
+  const filedata2 = fs.readFileSync(absoluteFilepath2, 'utf-8')
+
+  const data1 = parsers(filedata1, file1Ext);
+  const data2 = parsers(filedata2, file2Ext); 
   const result = formater(sortObject(diffObject(data1, data2)));
   console.log(result);
   return result;

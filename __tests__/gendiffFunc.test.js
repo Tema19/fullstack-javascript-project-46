@@ -2,10 +2,10 @@ import fs from 'fs/promises';
 import path, { dirname } from 'path';
 
 import { fileURLToPath } from 'url';
-import gendiff from '../src/gendiffFunc.js';
-import stylish from '../formaters/stylish.js';
-import plain from '../formaters/plain.js';
-import json from '../formaters/json.js';
+import gendiff from '../src/gendiff.js';
+import stylish from '../src/formaters/stylish.js';
+import plain from '../src/formaters/plain.js';
+import json from '../src/formaters/json.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
