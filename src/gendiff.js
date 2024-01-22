@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import parsers from './parsers.js';
+import makeAstTree from './makeAstTree.js';
 
 function addPrefixToObjectKeys(obj, prefix) {
   const newObj = {};
@@ -92,12 +93,13 @@ const gendiff = (filepath1, filepath2, formater = 'stylish') => {
   const file1Ext = path.extname(absoluteFilepath1);
   const file2Ext = path.extname(absoluteFilepath2);
 
-  const filedata1 = fs.readFileSync(absoluteFilepath1, 'utf-8')
-  const filedata2 = fs.readFileSync(absoluteFilepath2, 'utf-8')
+  const filedata1 = fs.readFileSync(absoluteFilepath1, 'utf-8');
+  const filedata2 = fs.readFileSync(absoluteFilepath2, 'utf-8');
 
   const data1 = parsers(filedata1, file1Ext);
-  const data2 = parsers(filedata2, file2Ext); 
-  const result = formater(sortObject(diffObject(data1, data2)));
+  const data2 = parsers(filedata2, file2Ext);
+  // const result = formater(sortObject(diffObject(data1, data2)));
+  const result = makeAstTree(data1, data2);
   console.log(result);
   return result;
 };
