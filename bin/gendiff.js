@@ -9,7 +9,24 @@ program
   .name('gendiff')
   .description('Compares two configuration files and shows a difference.')
   .version('1.0.0')
-  .arguments('<filepath1> <filepath2> [formater]')
-  .action((filepath1, filepath2) => { gendiff(filepath1, filepath2, program.format); });
+  .arguments('<filepath1> <filepath2>')
+  .option('-f, --format [type]', 'Output format: default stylish')
+  .action((filepath1, filepath2, options) => {
+    const type = options.format || 'stylish';
+    let formatter;
+    switch (type) {
+      case 'plain':
+        formatter = plain;
+        break;
+      case 'json':
+        formatter = json;
+        break;
+      case 'stylish':
+      default:
+        formatter = stylish;
+    }
+
+    gendiff(filepath1, filepath2, formatter);
+  });
 
 program.parse();

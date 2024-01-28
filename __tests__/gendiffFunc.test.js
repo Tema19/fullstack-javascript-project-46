@@ -42,7 +42,7 @@ describe('Json file tests', () => {
     test('gendiff between Json and non existing file', () => {
       expect(() => {
         gendiff(getFixturePath('file1.json'), getFixturePath('NonexistingFile.json'), stylish);
-      }).toThrow(Error);
+      }).toThrow(Error(`ENOENT: no such file or directory, open '${getFixturePath('NonexistingFile.json')}'`));
     });
   });
 });
