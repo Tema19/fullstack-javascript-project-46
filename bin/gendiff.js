@@ -26,7 +26,7 @@ program
         formatter = stylish;
     }
 
-    gendiff(filepath1, filepath2, formatter);
+    console.log(gendiff(filepath1, filepath2, formatter));
   });
 
 program.parse();

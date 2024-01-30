@@ -18,9 +18,12 @@ const makeAstTree = (obj1, obj2) => {
     if (obj1[key] === obj2[key]) {
       return { keyName: key, value: obj2[key], status: 'not changed' };
     }
-    return {
-      keyName: key, oldValue: obj1[key], newValue: obj2[key], status: 'changed',
-    };
+    if (obj1[key] !== obj2[key]) {
+      return {
+        keyName: key, oldValue: obj1[key], newValue: obj2[key], status: 'changed',
+      };
+    }
+    return null;
   });
   return treePart;
 };

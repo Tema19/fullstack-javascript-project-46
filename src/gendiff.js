@@ -17,8 +17,6 @@ const gendiff = (filepath1, filepath2, formater) => {
   const data2 = parsers(filedata2, file2Ext);
   const astTree = makeAstTree(data1, data2);
   const result = formater(astTree);
-  console.log(result);
-  // console.log(JSON.stringify(astTree, null, 2))
   return result;
 };
 
