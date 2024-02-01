@@ -25,5 +25,6 @@ describe('function highlight differences', () => {
     expect(gendiff(file1, file2, stylish)).toBe(result1);
     expect(gendiff(file1, file2, plain)).toBe(result2);
     expect(gendiff(file1, file2, json)).toBe(result3);
+    expect(gendiff(file1, file2)).toBe(result1);
   });
 });

@@ -2,8 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import parsers from './parsers.js';
 import makeAstTree from './makeAstTree.js';
+import stylish from './formaters/stylish.js';
 
-const gendiff = (filepath1, filepath2, formater) => {
+const gendiff = (filepath1, filepath2, formater = stylish) => {
   const absoluteFilepath1 = path.resolve(process.cwd(), filepath1);
   const absoluteFilepath2 = path.resolve(process.cwd(), filepath2);
 
