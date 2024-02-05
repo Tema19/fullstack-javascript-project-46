@@ -22,7 +22,7 @@ ${spaces}+ ${obj.keyName}: ${obj.newValue instanceof Object ? stylish([obj.newVa
       return Object.keys(obj).map((key) => `${spaces}  ${key}: ${obj[key] instanceof Object ? stylish([obj[key]], depth + 1) : obj[key]}`)
         .join('\n');
     }
-    return '';
+    return null;
   })
     .join('\n');
   return `{\n${result}\n${spacesEnds}}`;
