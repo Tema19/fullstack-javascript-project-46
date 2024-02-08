@@ -10,7 +10,7 @@ parserOptions:
 rules: {
   import/extensions: [0, {  <js>: "always"  }],
   no-underscore-dangle: 0,
-  fp/no-mutating-methods: ["error", {
+  'fp/no-mutating-methods': ["error", {
       "allowedObjects": ["array"]
     }]
 }
