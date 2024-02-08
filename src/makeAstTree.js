@@ -4,6 +4,7 @@ const makeAstTree = (obj1, obj2) => {
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
 
+  // eslint-disable-next-line
   const unionKeys = _.union(keys1, keys2).sort();
   const treePart = unionKeys.map((key) => {
     if (!_.has(obj1, key)) {

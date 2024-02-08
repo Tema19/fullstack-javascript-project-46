@@ -9,8 +9,5 @@ parserOptions:
   sourceType: module
 rules: {
   import/extensions: [0, {  <js>: "always"  }],
-  no-underscore-dangle: 0,
-  'fp/no-mutating-methods': ["error", {
-      "allowedObjects": ["array"]
-    }]
+  no-underscore-dangle: 0
 }
